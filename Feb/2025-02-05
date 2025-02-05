@@ -5,59 +5,30 @@
 ### 스크럼
 
 ### 새로 배운 내용
-#### 주제 1: 네트워크와 구성요소
-- LAN: 특정 지역 및 공간의 내부 네트워크 연결. Switch혹은 Hub로 연결
-- WAN: LAN간을 연결하기 위한 외부망. Router로 연결됨
-- 네트워크: node들이 통신 기술로 그물망처럼 연결된 상태
-- 인터넷: 크고작은 네트워크들의 네트워크
-- 대역폭=(용량X8)/(처리시간) -> 초당 처리할 수 있는 비트 
-- 프로토콜: 통신 시 정해놓은 표준규약 ex) TCP 4계층
-- OSI 7계층: 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것
-  Application Layer
-  Presentation Layer
-  Session Layer
-  Transport Layer
-  Network Layer
-  Data Link Layer
-  Physical Layer
--TCP/IP 4계층: OSI 7계층의 속도의 한계를 줄이기 위해 등장한 사실상의 표준
-  Application Layer
-  Transport Layer
-  Internet Layer
-  Network Access
-- port: 어플리케이션을 구분하기 위한 번호
-
-#### 주제 2: 계층별 장비, protocol
-- Application Layer: HTTP, DNS, FTP, SMTP,POP3 
-- Presentation Layer:
-- Session Layer:
-- Transport Layer: TCP(3-Way Handshake)/UDP. 
-- Network Layer: Router. Routing Table로 목적지를 찾음
-- Data Link Layer: switch, bridge. MAC 주소를 사용하여 통신(ARP).
-- Physical Layer: hub 하나의 입력 신호를 여러 디바이스로 복제(broadcasting) (vs switch: 전달할 대상을 지정)
-                  이더넷에서는 CSMA/CD를 통해 충돌을 회피
-
-### 주제 3: 인터넷 연결 
-- DHCP 서버: 사용자들에게 자동으로 IP주소를 할당, 회수해 주는 서버
-- DNS 서버: Domain name과 ip주소를 매칭해주는 서버 
-- IP 주소는 불변. MAC주소는 hop마다 변함
-- Load Balancer: 연결이 한 서버로 몰리지 않도록 분산시켜 주는 기술. 응용계층(http header, 서비스별), 전송계층(ip, port)
-  Round Robin
-  Weighted Round Robin
-  Random
-  Hash
-- VPN: 터널링을 통해 외부에서 보지 못하게 통신
-  IPsec
-  SSL VPN
-
+#### 주제 1: packet tracer을 이용하여 ARP동작 방법 학습
+  - ARP 테이블에 해당 ip의 mac주소 정보가 없는 경우 ARP요청을 날림(broadcast). 스위치는 요청을 계속 전파하고 node은 자신이 dest ip에 해당되면 자신의 mac주소를 보내줌
+  - broadcast이므로 snipping공격에 취약하다
+  
 ### 오늘의 도전 과제와 해결 방법
-- 도전 과제 1: 도전 과제에 대한 설명 및 해결 방법
-- 도전 과제 2: 도전 과제에 대한 설명 및 해결 방법
+- 도전 과제 1: 라우터를 이용하여 NAT구현 실습하기
+  1. router, pc, server, switch를 사용하여 간단한 NAT를 구현한다.
+  2. router과 routerd은 Serial인터페이스를 사용하여 연결한다.
+    **Serial 인터페이스란: router간에 연결에 사용하는 3게층 장비. 통신시 ip주소를 사용하며 mac주소는 사용하지 않는다. 패킷을 잡아 확인해보니
+      HDLC 프로토콜을 사용하여 통신하고 있었다. 
+  3. 각 장비들을 연결하고 pc, router의 각 포트, 스위치에 ip주소를 할당한다. 스위치는 2계층이라 ip가 필요없지만 원격 설정을 위해 필요하다
+  4. 라우팅을 위한 라우팅 테이블을 만들어야 한다
+    방법으로는 dynamic routing, static routing이 있다
+    static routing은 직접 테이블 요소를 추가하는 방법이다. 관리자가 직접 경로를 지정하는 방식
+    dynamic routing은 특정 알고리즘 기반으로 router가 자동으로 경로를 탐색하여 테이블을 구성하는 방식이다. 이를 위해 라우터가 연결된 네트워크 주소들을 입력해 주어야 한다.
+
+    오늘 실습은 static routing을 사용하였다. 
+  
+
 
 ### 오늘의 회고
-- 오늘의 학습 경험에 대한 자유로운 생각이나 느낀 점을 기록합니다.
-- 성공적인 점, 개선해야 할 점, 새롭게 시도하고 싶은 방법 등을 포함할 수 있습니다.
+- static routing을 실습해 보니 dynamic routing에 대해 알고싶어졌다.
+- 실습은 잘 되었다 그런데 packet tracer에서 시뮬레이션 모드로 패킷을 보낼 때 중간에 STP패킷이 생성되던데 무엇인지 찾아봐야겠다.
 
 ### 참고 자료 및 링크
-- [ALB와 NLB](https://f-lab.kr/insight/understanding-aws-alb-and-nlb-20240516?gad_source=1&gclid=CjwKCAiAzPy8BhBoEiwAbnM9O7tDbDNZplkNcX0nQTn2ORglFIIkONpIug5IlLVkYg9vIbnYxBw2TRoClcgQAvD_BwE)
-- [Load balance 이해하기](https://aws.amazon.com/ko/what-is/load-balancing/)
+- [dynamic routing]https://www.youtube.com/watch?v=EygAa0L6XvI
+- [Serial interface] https://www.cisco.com/c/en/us/td/docs/routers/access/800M/software/800MSCG/serconf.html
