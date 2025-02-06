@@ -7,10 +7,10 @@
 
 ### 새로 배운 내용
 #### 주제 1: 네트워크 보안
-- 네트워크 ACL
-- 네트워크 방화벽
-- WAF: Web Application Firewall
-- Shield: DDos protection service
+- 네트워크 ACL: 라우터나 스위치에서 패킷을 검사하여 ip, port, protocol을 검사하여 피킷의 통과 여부를 결정하는 목록
+- 네트워크 방화벽: 미리 정의된 보안 규칙에 기반하여 들어오고 나가는 트래픽을 제어하는 시스템
+- WAF: Web Application Firewall. 어플리케이션으로 이동하는 악의적인 트리팩을 필터링, 차단하여 승인되지 않은 데이터가 앱에서 나가는 것을 방지.
+- Shield: DDos protection service. 
 - 보안의 필수 요소: 
   기밀성: 엳듣는 것을 방지. 암호화
   무결성: 데이터 변조 방지. MD5, SHA
