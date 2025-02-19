@@ -1,0 +1,92 @@
+# TIL Template
+
+## 날짜: 2025-02-19
+
+### 스크럼
+
+### 새로 배운 내용
+#### 주제 1: kubectl 실습
+kubectl 자동완성 설정 (영구 적용)
+🔹 현재 사용 중인 쉘 확인:
+echo $SHELL
+✅ Bash인 경우:
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+source ~/.bashrc
+✅ Zsh인 경우:
+echo 'source <(kubectl completion zsh)' >> ~/.zshrc
+source ~/.zshrc
+2️⃣ Pod 관련 명령어
+🔹 현재 실행 중인 Pod 확인:
+kubectl get pods
+🔹 Pod 상세 정보 확인:
+kubectl describe pod <POD_NAME>
+🔹 Pod 로그 확인:
+kubectl logs <POD_NAME>
+🔹 특정 Pod 삭제:
+kubectl delete pod <POD_NAME>
+🔹 모든 Pod 삭제:
+kubectl delete pod --all
+3️⃣ Deployment 관련 명령어
+🔹 현재 실행 중인 Deployment 확인:
+kubectl get deployments
+🔹 Deployment 생성:
+kubectl apply -f mydeploy.yaml
+🔹 Deployment 삭제 후 다시 생성:
+kubectl delete deployment mydeploy
+kubectl apply -f mydeploy.yaml
+🔹 Deployment 업데이트 (이미지 변경):
+kubectl set image deployment/mydeploy nginx=nginx:latest
+🔹 Deployment 롤아웃 상태 확인:
+kubectl rollout status deployment mydeploy
+🔹 Deployment 변경 이력 확인:
+kubectl rollout history deployment mydeploy
+4️⃣ ImagePullBackOff 및 ErrImagePull 오류 해결
+🔹 원인:
+
+잘못된 이미지 이름 사용 (nginx:1.9.1 등 오래된 버전)
+프라이빗 레지스트리 접근 문제
+Minikube에서 로컬 이미지를 인식하지 못함
+🔹 해결 방법:
+✅ 사용 가능한 최신 버전으로 변경
+kubectl set image deployment/mydeploy nginx=nginx:latest
+또는
+kubectl set image deployment/mydeploy nginx=nginx:1.23
+✅ Minikube에서 로컬 이미지 사용 시
+eval $(minikube docker-env)
+minikube image load nginx:1.9.1
+✅ Docker Hub에서 nginx:1.9.1 확인
+docker pull nginx:1.9.1
+만약 manifest unknown 오류 발생 시 최신 버전으로 변경해야 함
+
+5️⃣ Minikube 관련 명령어
+🔹 Minikube 시작:
+minikube start
+🔹 Minikube 상태 확인:
+minikube status
+🔹 Minikube 내에서 실행 중인 Docker 이미지 확인:
+minikube ssh
+docker images
+🔹 Minikube에서 로컬 이미지 로드:
+minikube image load <IMAGE_NAME>
+6️⃣ YAML 파일 오류 해결
+🔹 cat -A로 특수 문자 확인 (UTF-8 BOM 문제 해결)
+cat -A webapl-pod.yml
+🔹 UTF-8 BOM 제거:
+iconv -c -f utf-8 -t utf-8 webapl-pod.yml -o webapl-pod-fixed.yml
+mv webapl-pod-fixed.yml webapl-pod.yml
+🔹 Windows 줄바꿈 문제 해결:
+dos2unix webapl-pod.yml
+7️⃣ kubectl apply 오류 해결
+🔹 resource name may not be empty 오류 해결
+
+YAML 파일에서 metadata.name 누락 확인
+yaml
+metadata:
+  name: webapl
+Pod이 존재하지 않으면 apply 대신 create 사용
+kubectl create -f webapl-pod.yml
+
+
+
+### 오늘의 회고
+- 전체적인 흐름을 이해하고, 실습을 통해 명령어와 익숙해져야 할 것 같다.
