@@ -5,50 +5,11 @@
 ### 스크럼
 
 ### 새로 배운 내용
-#### 주제 1: 네트워크와 구성요소
-- LAN: 특정 지역 및 공간의 내부 네트워크 연결. Switch혹은 Hub로 연결
-- WAN: LAN간을 연결하기 위한 외부망. Router로 연결됨
-- 네트워크: node들이 통신 기술로 그물망처럼 연결된 상태
-- 인터넷: 크고작은 네트워크들의 네트워크
-- 대역폭=(용량X8)/(처리시간) -> 초당 처리할 수 있는 비트 
-- 프로토콜: 통신 시 정해놓은 표준규약 ex) TCP 4계층
-- OSI 7계층: 네트워크에서 통신이 일어나는 과정을 7단계로 나눈 것
-  Application Layer
-  Presentation Layer
-  Session Layer
-  Transport Layer
-  Network Layer
-  Data Link Layer
-  Physical Layer
--TCP/IP 4계층: OSI 7계층의 속도의 한계를 줄이기 위해 등장한 사실상의 표준
-  Application Layer
-  Transport Layer
-  Internet Layer
-  Network Access
-- port: 어플리케이션을 구분하기 위한 번호
+#### 주제 1:
 
-#### 주제 2: 계층별 장비, protocol
-- Application Layer: HTTP, DNS, FTP, SMTP,POP3 
-- Presentation Layer:
-- Session Layer:
-- Transport Layer: TCP(3-Way Handshake)/UDP. 
-- Network Layer: Router. Routing Table로 목적지를 찾음
-- Data Link Layer: switch, bridge. MAC 주소를 사용하여 통신(ARP).
-- Physical Layer: hub 하나의 입력 신호를 여러 디바이스로 복제(broadcasting) (vs switch: 전달할 대상을 지정)
-                  이더넷에서는 CSMA/CD를 통해 충돌을 회피
+#### 주제 2: 
 
-### 주제 3: 인터넷 연결 
-- DHCP 서버: 사용자들에게 자동으로 IP주소를 할당, 회수해 주는 서버
-- DNS 서버: Domain name과 ip주소를 매칭해주는 서버 
-- IP 주소는 불변. MAC주소는 hop마다 변함
-- Load Balancer: 연결이 한 서버로 몰리지 않도록 분산시켜 주는 기술. 응용계층(http header, 서비스별), 전송계층(ip, port)
-  Round Robin
-  Weighted Round Robin
-  Random
-  Hash
-- VPN: 터널링을 통해 외부에서 보지 못하게 통신
-  IPsec
-  SSL VPN
+### 주제 3:
 
 ### 오늘의 도전 과제와 해결 방법
 - 도전 과제 1: 도전 과제에 대한 설명 및 해결 방법
@@ -59,5 +20,4 @@
 - 성공적인 점, 개선해야 할 점, 새롭게 시도하고 싶은 방법 등을 포함할 수 있습니다.
 
 ### 참고 자료 및 링크
-- [ALB와 NLB](https://f-lab.kr/insight/understanding-aws-alb-and-nlb-20240516?gad_source=1&gclid=CjwKCAiAzPy8BhBoEiwAbnM9O7tDbDNZplkNcX0nQTn2ORglFIIkONpIug5IlLVkYg9vIbnYxBw2TRoClcgQAvD_BwE)
-- [Load balance 이해하기](https://aws.amazon.com/ko/what-is/load-balancing/)
+- 
